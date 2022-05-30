@@ -7,6 +7,24 @@ import App from './App.vue';
 import routes from './routes';
 
 
+console.log("???");
+
+window.addEventListener('popstate', function (event) {
+  console.log('event: ', event);
+  console.log(event);
+  // alert(
+  //   "location: " + document.location + ", state: " + JSON.stringify(event.state)
+  // );
+});
+
+// window.addEventListener("popstate", function (event) {
+//   console.log(event);
+//   alert(
+//     "location: " + document.location + ", state: " + JSON.stringify(event.state)
+//   );
+// });
+
+
 let vue: Root<Element> | null = null;
 
 const runApp = (container: Element | string) => {

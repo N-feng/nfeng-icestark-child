@@ -1,28 +1,30 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import appHistory from '@ice/stark-app/lib/appHistory';
-import { useRouter, useRoute } from "vue-router";
-import { store } from "@ice/stark-data";
+import appHistory from "@ice/stark-app/lib/appHistory";
+// import { useRouter, useRoute } from "vue-router";
+// import { store } from "@ice/stark-data";
 
-const router = useRouter();
+// const router = useRouter();
 
-store.on('routerPush', (key: string) => {
-  console.log(key)
-  if (key.includes('/waiter')) {
-    router.push(key.replace('/waiter', '') || '/')
-  }
-})
+// store.on('routerPush', (key: string) => {
+//   console.log(key)
+//   if (key.includes('/waiter')) {
+//     router.push(key.replace('/waiter', '') || '/')
+//   }
+// })
 
 const jumpToLayout = () => {
-  appHistory.push('/');
+  appHistory.push("/");
 };
-
 </script>
 
 <template>
   <div class="wrapper">
-    <img alt="Vue logo" src="https://gw.alicdn.com/imgextra/i2/O1CN01y9FKOg1f0OnH6Hew8_!!6000000003944-2-tps-200-200.png" />
+    <img
+      alt="Vue logo"
+      src="https://gw.alicdn.com/imgextra/i2/O1CN01y9FKOg1f0OnH6Hew8_!!6000000003944-2-tps-200-200.png"
+    />
 
     <br />
     <router-link to="/"> Home </router-link>
@@ -31,14 +33,13 @@ const jumpToLayout = () => {
     <br />
     <button @click="jumpToLayout">微应用间跳转</button>
 
-<!--    <router-view />-->
+    <!--    <router-view />-->
     <router-view v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </router-view>
   </div>
-
 </template>
 
 <style scoped>
