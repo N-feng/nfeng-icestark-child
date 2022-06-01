@@ -2,21 +2,28 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import appHistory from "@ice/stark-app/lib/appHistory";
-// import { useRouter, useRoute } from "vue-router";
-// import { store } from "@ice/stark-data";
+import { useRouter } from "vue-router";
+import { store } from "@ice/stark-data";
+import { onMounted, onUnmounted } from "vue";
 
-// const router = useRouter();
-
-// store.on('routerPush', (key: string) => {
-//   console.log(key)
-//   if (key.includes('/waiter')) {
-//     router.push(key.replace('/waiter', '') || '/')
-//   }
-// })
+const router = useRouter();
 
 const jumpToLayout = () => {
   appHistory.push("/");
 };
+
+onMounted(() => {
+  store.on("routerPush", (event: any) => {
+    console.log("event: ", event);
+    if (event.title.includes("waiter")) {
+      const path = event.url.replace("/waiter", "") || "/";
+      router.push(path);
+    }
+  });
+});
+onUnmounted(() => {
+  console.log("onUnmounted");
+});
 </script>
 
 <template>

@@ -23,10 +23,10 @@ const routes = [
     path: '/detail',
     component: Detail,
   },
-  {
-    path: '/:pathMatch(.*)',
-    component: isInIcestark() ? () => renderNotFoundPromise() : NotFound,
-  },
+  // {
+  //   path: '/:pathMatch(.*)',
+  //   component: isInIcestark() ? () => renderNotFoundPromise() : NotFound,
+  // },
 ];
 
 export default routes;
